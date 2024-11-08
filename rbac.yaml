@@ -1,0 +1,100 @@
+#namespace level:
+#creating expense-trainee role for User suresh to access trainee level resources like namespace level resources like pods.
+
+#1) creating role:
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: expense-trainee
+  namespace: expense
+rules:
+- apiGroups: [""]  #Core API Group like k8 resources like pod, deployment, replicaset, configmap, secret, pv, pvc etc .,.
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+
+---
+#creating rolebinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: expense-trainee
+  namespace: expense
+roleRef:
+- apiGroup: rbac.authorization.k8s.io
+  name: expense-trainee
+  kind: Role
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  name: User
+  kind: suresh
+
+---
+
+#creating expense-admin Role for the User ramesh to access admin level tasks such as all apiGroup resources, all resources and all verbs(actions)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: expense-admin
+  namespace: expense
+rules:
+- apiGroups: ["*"]  # * --> means all apiGroup resources, all resources and all verbs(actions)
+  resources: ["*"]
+  verbs: ["*"]
+
+---
+
+#creating roleBinding (expense-admin Role expense-admin User ramesh):
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: expense-admin
+  namespace: expense
+roleRef:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: expense-admin
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  name: ramesh
+  kind: User
+
+---
+
+#cluster level:
+#creating ClusterRole with expense name to access cluster level resources like nodes, persistentvolumes, namespaces etc.,.
+apiVersion: rbac.authorization.k8s.io
+kind: ClusterRole
+metadata:
+  name: expense
+rules:
+- apiGroups: [""]
+  resources: ["nodes", "namespaces", "persistentvolumes"]
+  verbs: ["get", "watch", "list"]
+
+---
+#creating ClusterRoleBinding
+apiVersion: v1
+kind: ClusterRoleBinding
+metadata:
+  name: expense
+roleRef:
+- apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: expense
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  name: ramesh
+  kind: User
+
+
+#finally, suresh is having expense-trainee namespace level access
+#ramesh is having both expense-admin level to all resources and ClusterRole to access the cluster resources.
+
+
+
+
+
+
+
+
+

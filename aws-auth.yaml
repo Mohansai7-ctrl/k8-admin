@@ -1,0 +1,31 @@
+#in k8_workstation cluster, below aws-auth config map will get by:
+#kubectl get configmap aws-auth -n kube-system -o yaml
+#copy past and add mapUsers:
+
+apiVersion: v1
+data:
+  mapRoles: | #This to be took after creating the cluster(worknodes)
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::315069654700:role/eksctl-expense-nodegroup-expense-NodeInstanceRole-s5iLLwbCscFS
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    - groups:
+      - expense-trainee
+      rolearn: arn:aws:iam::022499022353:user/suresh
+      username: suresh
+    - groups:
+      - expense-admin
+      rolearn: arn:aws:iam::022499022353:user/ramesh
+      username: ramesh
+  
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-11-06T02:05:11Z"
+  name: aws-auth
+  namespace: kube-system
+  uid: 7c41c4b2-f380-4fe0-91b7-6035fd37f2dc
+
+
+
