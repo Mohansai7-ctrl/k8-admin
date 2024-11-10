@@ -1,4 +1,8 @@
 #namespace level:
+#First make sure to create namespace expense
+# manually,
+# kubectl create namespace expense
+
 #creating expense-trainee role for User suresh to access trainee level resources like namespace level resources like pods.
 
 #1) creating role:
