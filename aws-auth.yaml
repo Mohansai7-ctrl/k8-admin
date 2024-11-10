@@ -28,7 +28,7 @@ data:
       username: suresh
     - groups:
       - expense-admin
-      rolearn: arn:aws:iam::022499022353:user/ramesh
+      userarn: arn:aws:iam::022499022353:user/ramesh
       username: ramesh
   
 kind: ConfigMap
