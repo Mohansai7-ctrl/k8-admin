@@ -26,7 +26,7 @@ metadata:
   name: expense-trainee
   namespace: expense
 roleRef:
-- apiGroup: rbac.authorization.k8s.io
+  apiGroup: rbac.authorization.k8s.io
   name: expense-trainee
   kind: Role
 subjects:
@@ -56,7 +56,7 @@ metadata:
   name: expense-admin
   namespace: expense
 roleRef:
-- apiGroup: rbac.authorization.k8s.io
+  apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: expense-admin
 subjects:
@@ -68,7 +68,7 @@ subjects:
 
 #cluster level:
 #creating ClusterRole with expense name to access cluster level resources like nodes, persistentvolumes, namespaces etc.,.
-apiVersion: rbac.authorization.k8s.io
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: expense
@@ -79,12 +79,12 @@ rules:
 
 ---
 #creating ClusterRoleBinding
-apiVersion: v1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: expense
 roleRef:
-- apiGroup: rbac.authorization.k8s.io
+  apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: expense
 subjects:

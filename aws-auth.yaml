@@ -5,6 +5,14 @@
 below details will get from the workstation:
 # kubectl get configmap aws-auth -n kube-system -o yaml
 
+# kubens installation:
+# sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+# sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+# sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+
+# k9s install:
+# curl -sS https://webinstall.dev/k9s | bash
+
 apiVersion: v1
 data:
   mapRoles: |
