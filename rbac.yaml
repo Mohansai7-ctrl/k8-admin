@@ -5,6 +5,8 @@
 
 #creating expense-trainee role for User suresh to access trainee level resources like namespace level resources like pods.
 
+
+
 #1) creating role:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role

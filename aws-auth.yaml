@@ -2,6 +2,9 @@
 #kubectl get configmap aws-auth -n kube-system -o yaml
 #copy past and add mapUsers:
 
+below details will get from the workstation:
+# kubectl get configmap aws-auth -n kube-system -o yaml
+
 apiVersion: v1
 data:
   mapRoles: |
