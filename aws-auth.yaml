@@ -24,7 +24,7 @@ data:
   mapUsers: |
     - groups:
       - expense-trainee
-      rolearn: arn:aws:iam::022499022353:user/suresh
+      userarn: arn:aws:iam::022499022353:user/suresh
       username: suresh
     - groups:
       - expense-admin

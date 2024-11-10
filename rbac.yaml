@@ -97,6 +97,13 @@ subjects:
 #ramesh is having both expense-admin level to all resources and ClusterRole to access the cluster resources.
 
 
+# after creating ramesh and suresh roles , rolebindings and clusterrole and cluster role bindings:
+# create another client server in which configure aws using suresh credentials
+# install kubectl, eksctl, kubens, if need docker
+# next update
+# aws eks update-kubeconfig --region us-east-1 --name
+
+
 
 
 
